@@ -1,0 +1,84 @@
+@(message: String, username: String, score: String, highscore: String, gamesPlayed: String)(implicit assetsFinder: AssetsFinder)
+
+@defining(play.core.PlayVersion.current) { version =>
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>@username's Profil</title>
+            <link rel="shortcut Icon" type="image/png" href="@assetsFinder.path("images/icon.png")">
+            <link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/style.css")">
+            <script src="@assetsFinder.path("javascripts/friend.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/profileView.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/chat.js")" type="text/javascript"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </head>
+        <body id="profile_body">
+            <ul class="menu_ul">
+                <div class="menu_top_links">
+                    <li class="menu_li"><a href="mainpage">Garage</a></li>
+                    <li class="menu_li"><a href="profile">Profil</a></li>
+                    <li class="menu_li"><a href="highscore">Bestenliste</a></li>
+                </div>
+                <li class="menu_li" style="float: right"><a href="@routes.LoginController.logout()">Abmelden</a></li>
+                <img id="friend_backButton" src="@assetsFinder.path("images/back-button.png")" alt="Zurück" onclick="window.location.href = '/profile'">
+            </ul>
+            <div class ="chat_div">
+                <img id="chat_button" class = "chat_button" src="@assetsFinder.path("images/chat_icon_weiß.png")" onclick="open_chat()" >
+
+                <div class = "chat_window" id = "chat_show">
+                    <form id="chat_containerFreunde" >
+                        <div class ="chat_friendslist" id="chat_friendslist">
+                            <label class="profile_label">Meine Freunde:</label>
+                            <ol id="friends_list_chat">
+                            </ol>
+                        </div>
+                    </form>
+
+                    <form id="chat_containerChat" onsubmit="return false">
+                        <img id="chat_window_close_button" alt="Spiel beenden" src="@assetsFinder.path("images/x-button.png")"
+                        onclick="close_chat()" >
+                        <div id ="chat_messagechat">
+                            <label id = "chat_containerLabel_Freund" class="profile_label">
+                                Wähle einen Freund aus um ihm Nachrichten zu Schreiben!</label>
+                            <div class ="chat_Messagelist" id="chat_Messagelist">
+                                <div id="friends_listM">
+                                </div>
+                            </div>
+                            <div id ="chat_messagelist_buI">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="profile_friend">
+                <label class="profile_label">@username`s Freunde:</label>
+                <div class ="profile_friendsList">
+                    <ol id="friends_list">
+                    </ol>
+                </div>
+            </div>
+            <div class="profile_container">
+                <img id="profile_profilePic" src="@assetsFinder.path("images/profile-icon.png")" alt="Mein Profilbild" style="width: 200px;
+                    height: 200px">
+                <h3 id="profile_name" >@username</h3>
+                <div id="profile_scoreDiv">
+                    <label>Punkte:</label>
+                    <output id="profile_score">@score</output>
+                    <label>Rekord:</label>
+                    <output id="profile_score">@highscore</output>
+                    <label>Spielanzahl:</label>
+                    <output id="profile_score">@gamesPlayed</output>
+                </div>
+            </div>
+            <div id="profile_achievementCon">
+                <label class="profile_label">@username`s Errungenschaften:</label>
+                <div id="profile_achievements">
+                </div>
+            </div>
+            <script>friend_loadFriendsOfFriendsList()</script>
+            <script>friend_loadAchievements()</script>
+            <script>friend_loadPicture()</script>
+        </body>
+    </html>
+}

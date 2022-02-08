@@ -1,0 +1,1655 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+body, html {
+    /* https://www.w3.org/Style/Examples/007/fonts.en.html */
+    font-family: arial, serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.menu_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5d353e;
+    border-top: 4px solid #b2d6ca;
+}
+
+.menu_li {
+    float: left;
+}
+
+.menu_li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.menu_li a:hover {
+    background-color: #fe5858;
+}
+
+.menu_top_bg {
+    background-color: white;
+    border-top: 4px solid #b2d6ca;
+    width: auto;
+    height: 49px;
+}
+
+.menu_top_links {
+    margin-left: 42%;
+}
+
+/* ############### CHAT ############### */
+.chat_label {
+
+}
+
+.chat_button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 100px;
+    z-index: 1;
+}
+
+.chat_window {
+    display: none;
+    background-color: white;
+    border-radius: 10px;
+    bottom: 3%;
+    right: 3%;
+    width: 50%;
+    height: 60%;
+    position: fixed;
+    box-shadow: 0 10px 6px -6px #777;
+    border: 2px solid #b2d6ca;
+    padding: 10px 15px;
+    z-index: 1;
+}
+
+#chat_containerFreunde {
+    width: 23%;
+    height: 80%;
+    top: auto;
+    left: auto;
+    max-height: 90%;
+    position: absolute;
+    overflow: scroll;
+
+}
+
+#chat_containerChat {
+    width: auto;
+    background-color: white;
+    top: 3%;
+    left: 30%;
+    right: 3%;
+    height: 94%;
+    position: absolute;
+    float: right;
+}
+
+#chat_send_button {
+    bottom: 0;
+    right: 0;
+    background-color: #024b40;
+    border: none;
+    color: #ffffff;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-right: 1%;
+    position: absolute;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+
+}
+
+#chat_input_text {
+    text-align: center;
+    width: 70%;
+    /*height: 10%;
+
+     */
+    margin-left: 1%;
+    padding: 15px 32px;
+    display: inline-block;
+    border: 2px solid #B2D6Ca;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+#chat_window_close_button {
+    float: right;
+    width: 3.7%;
+    height: auto;
+
+}
+
+#chat_window_close_button :hover {
+    cursor: pointer;
+}
+
+.chat_friendslist ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chat_friendslist li {
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-bottom: 4%;
+}
+
+#chat_friendslist {
+    margin-bottom: 4%;
+    margin-right: 2%;
+    margin-top: 2%;
+    text-align: left;
+    width: auto;
+}
+
+#chat_Messagelist {
+
+    margin-bottom: 4%;
+    text-align: left;
+    width: 100%;
+    max-height: 78%;
+    overflow-y: scroll;
+    overflow-x: visible;
+    position: absolute;
+
+}
+
+.chat_Messagelist_user {
+    width: 50%;
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #B2D6Ca;
+    color: #444;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+    word-break: break-word;
+    float: right;
+}
+
+.chat_Messagelist_friend {
+    width: 50%;
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #B2D6Ca;
+    color: #444;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+    word-break: break-word;
+    float: left;
+}
+
+.chat_Messagelist_time {
+    margin-bottom: 1px;
+    margin-top: 1px;
+    font-size: x-small;
+}
+
+.chat_friendslist a {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #B2D6Ca;
+    color: #444;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+}
+
+.chat_friendslist a:hover {
+    cursor: pointer;
+    background: #d6d4d4;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* ############### MAINPAGE ############### */
+#main_concept_track {
+    width: 55%;
+    float: left;
+}
+
+#main_concept_track img {
+    display: block;
+    margin: 100px 0px 0px auto;
+    border: 5px solid black;
+}
+
+#main_concept_stats {
+    width: 45%;
+    float: right;
+    margin: 100px auto 0px 0px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#main_stats_past {
+    width: 50%;
+    margin: 100px auto;
+    border-collapse: collapse;
+}
+
+#main_stats_past th, #main_stats_past td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+
+}
+
+#main_div {
+    position: relative;
+    width: 1380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main_div img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#main_questionmarkOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4.5vw;
+    height: auto;
+    padding: 1%;
+}
+
+#main_garage {
+    display: block;
+}
+
+#main_hoverPlay, #main_hoverInventory, #main_hoverProfile, #main_hoverBlueprint, #main_grayGarage, #main_garageOverlay {
+    display: none;
+}
+
+#main_centerpoint {
+    position: fixed;
+    top: 50%;
+    left: 32%;
+}
+
+#main_buttons {
+    text-align: center;
+}
+
+#main_easy {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#main_inventoryBackground {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#main_inventory {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#main_inventoryContainer {
+    font-size: calc(1vh + 0.5vw);
+    position: fixed;
+    margin: auto;
+    padding: 3%;
+    left: 0;
+    right: 0;
+    top: 10%;
+    text-align: center;
+    border: solid 6px #2b2b2b;
+    border-radius: 20px;
+    background-color: white;
+    width: 60vw;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.main_item {
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: min-content;
+    border: solid 6px #2b2b2b;
+    border-radius: 20px;
+    margin: 2%;
+    width: 30%;
+    overflow-wrap: break-word;
+}
+
+.main_item p {
+    font-size: calc(1vh + 0.5vw);
+}
+
+.main_item img {
+    height: 3vw;
+    object-fit: contain;
+}
+
+#main_hard {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#close_dialog {
+    cursor: pointer;
+}
+
+#dialog_heading {
+    font-size: 20px;
+    text-align: center;
+}
+
+dialog {
+    display: none;
+    position: absolute;
+    background-color: #3e3e3e;
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid #eea24c;
+    border-radius: 20px;
+    width: 60%;
+    color: white;
+}
+
+dialog[open="open"] {
+    display: block;
+}
+
+@media (min-width: 40em) {
+    dialog {
+        width: 40em;
+    }
+}
+
+/**--------------------- Tutorial----------------------------*/
+
+/* Slideshow container */
+.slideshow-container {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+}
+
+.slideshow-container .backplane {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 1;
+    background-color: black;
+}
+
+.slideshow-container .slideshow {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 3%;
+    z-index: 2;
+    border: solid 6px #2b2b2b;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.back-button {
+    cursor: pointer;
+}
+
+.back-button img {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    width: 5.5%;
+    z-index: 1;
+}
+
+.back-button span {
+    position: absolute;
+    margin-top: 1.75%;
+    top: 0.6vw;
+    left: 9%;
+    font-size: calc(1vh + 0.5vw);
+    z-index: 1;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    color: lightgrey;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    padding: 15px 4px 15px 15px;
+}
+.prev {
+    padding: 15px 15px 15px 4px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.main_dotContainer {
+    text-align: center;
+    position: absolute;
+    bottom: 7%;
+    left: 45%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot_active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.tutorialGif {
+    position: absolute;
+    left: 24%;
+    top: 22%;
+    height: 44%;
+}
+
+/* ############### PROFILE ############### */
+
+#profile_body {
+    background-image: url(../images/Rennstreckehintergrund.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+#profile_profilePic {
+    border-color: #b2d6ca;
+    background-color: white;
+    border-width: medium;
+    border-style: inset;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 50%;
+    margin-left: 0;
+    margin-right: auto;
+    display: flex;
+
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.profile_banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+}
+
+
+.profile_center {
+    text-align: center;
+
+}
+
+.profile_button {
+    background-color: #024b40;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+
+}
+
+#profile_name {
+    color: #024b40;
+    text-shadow: #b2d6ca 0.1em 0.1em 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.profile_container {
+    margin-left: 43%;
+    margin-top: 2%;
+    width: 236px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#profile_troph {
+    color: #024b40;
+    text-shadow: #b2d6ca 0.1em 0.1em 0.2em;
+}
+
+#profile_scoreDiv {
+    font-size: larger;
+    color: #5d353e;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile_score {
+    font-weight: bold;
+}
+
+#profile_username {
+    font-weight: bold;
+}
+
+#profile_achievementCon {
+    width: 35%;
+    margin-left: 30%;
+    margin-top: 3%;
+
+    background-color: white;
+    border-radius: 20px;
+    padding: 1%;
+
+    overflow-x: scroll;
+
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.profile_label {
+    font-size: larger;
+    color: #024b40;
+}
+
+#profile_achievements {
+    margin-top: 3%;
+}
+
+#friend_backButton {
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    width: 5.5%;
+    z-index: 1;
+}
+
+#profile_friend {
+    float: right;
+    margin-top: 10%;
+    margin-right: 5%;
+    width: 20%;
+    position: relative;
+
+    background-color: white;
+    border-radius: 20px;
+    padding: 1%;
+    z-index: 0;
+    overflow: visible;
+
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+#friends_list li {
+    margin-bottom: 2%;
+}
+
+#profile_addFriend {
+    float: left;
+    margin-right: 3%;
+}
+
+#profile_addFriendButton {
+    background-color: #024b40;
+    padding: 10px 15px;
+    border-radius: inherit;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+    margin-bottom: 4%;
+
+}
+
+#profile_searchfriend {
+    margin-bottom: 4%;
+    padding: 10px 15px;
+    text-align: left;
+    width: 100px;
+    border: 2px solid #b2d6ca;
+    border-radius: inherit;
+
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.profile_friendsList {
+    margin: 0 auto;
+}
+
+.profile_friendsList ol {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    padding: 0;
+}
+
+.profile_friendsList ol ol {
+    margin: 0 0 0 2em;
+}
+
+.profile_friendsList a {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: #B2D6Ca;
+    color: #444;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+}
+
+.profile_friendsList.clickable a:hover {
+    cursor: pointer;
+    background: #d6d4d4;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+
+.profile_friendsList a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #B2D6Ca;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.profile_bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.profile_modal-content {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 4px;
+    position: relative;
+}
+
+.profile_close {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#profile_Pics {
+    display: block;
+}
+
+.profile_Img {
+    width: 70%;
+    height: auto;
+    cursor: pointer;
+}
+
+#profile_Pics {
+    margin-top: 10%;
+    margin-left: 20%;
+    width: 350px;
+    height: 350px;
+    display: grid;
+    grid-gap: 10px;
+}
+
+#image1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#image2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#image3 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#image4 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#profile_changeName {
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.button {
+    float: left;
+    width: 200px;
+    padding: 20px 30px;
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .5s;
+}
+
+#success {
+    background: #03a679;
+    color: #f0f0f0;
+}
+
+#failure {
+    background: #ff3939;
+    color: #f0f0f0;
+}
+
+.profile_notify {
+    position: absolute;
+    top: 0;
+    width: 80%;
+    height: 0;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, .6);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: height .2s;
+    border-radius: 20px;
+}
+
+#notifyType:before {
+    display: block;
+    margin-top: 15px;
+
+}
+
+.active {
+    height: 50px;
+}
+
+.success:before {
+    Content: "Freund hinzugefügt";
+}
+
+.failure:before {
+    Content: "Freund konnte nicht hinzugefügt werden!";
+}
+
+.profile_modalButton {
+    background-color: #024b40;
+    margin-left: 38%;
+    margin-bottom: 5%;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+/* ############### LOGIN ############### */
+.login_bg {
+    /*
+    background-color: #5d353e;
+     */
+    height: 75%;
+}
+
+
+.login_button {
+    display: block;
+    text-align: center;
+    width: 25%;
+    background: #B2D6Ca;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.login_button:hover {
+    opacity: 0.7;
+}
+
+.login_form {
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 25%;
+    margin-bottom: auto;
+    position: relative;
+
+
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    display: block;
+    padding: 3%;
+}
+
+.login_input {
+    text-align: center;
+    width: 50%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid #B2D6Ca;
+    border-radius: inherit;
+    box-sizing: border-box;
+}
+
+.login_label {
+    text-align: center;
+    display: block;
+}
+
+
+/* ############### HIGHSCORE ############### */
+#highscore_body {
+    background: rgb(178, 214, 202);
+    background: radial-gradient(circle, rgba(178, 214, 202, 1) 13%, rgba(255, 255, 255, 1) 100%);
+    background-size: 400% 400%;
+}
+
+#highscore_header {
+    margin-top: 3%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#highsore_tab {
+    position: relative;
+    left: 31%;
+    top: 10%;
+    margin-bottom: 10%;
+    border-collapse: collapse;
+    width: 40%;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+#highsore_tab tr {
+    transition: all .2s ease-in;
+}
+
+#highsore_tab th,
+#highsore_tab td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#highsore_tab td {
+    background-color: white;
+    color: black;
+}
+
+#fixedHeader {
+    background-color: #5d353e;
+    color: #fff;
+}
+
+#highsore_h {
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    padding: 10px 0px;
+}
+
+#highscore_buttons {
+    align-items: center;
+    display: flex;
+    margin-left: 38%;
+    padding: 1em;
+    text-align: center;
+}
+
+.highscore_menu {
+    background-color: #024b40;
+    margin-right: 2%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+
+}
+
+/* ############### QUIZ ############### */
+/*
+should probably change all to position absolute
+ */
+#quiz_nogif {
+    display: block;
+}
+
+#quiz_insideCar {
+    display: none;
+}
+
+#quiz_nearCar {
+    display: none;
+}
+
+#quiz_farawayCar {
+    display: none;
+}
+
+#quiz_quizContainer {
+    margin-top: 1.5%;
+    position: relative;
+    width: 637px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.quiz_streetview {
+    width: 100%;
+}
+
+#quiz_xButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: block;
+}
+
+#quiz_end,
+#quiz_exit {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    padding-top: 3%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+#confetti_canvas {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#quiz_lights {
+    position: absolute;
+    filter: brightness(1.9);
+    width: 27%;
+    height: auto;
+    right: 37%;
+    top: 29%;
+    /*wenn das Eingabefeld nicht vollständig überdeckt werden soll, dann 23 nutzen*/
+    z-index: 1;
+}
+
+#quiz_racetrackContainer {
+    position: relative;
+    width: 60%;
+    left: 20%;
+    /*height: 100px;*/
+    height: 15%;
+    margin-top: 2%;
+    box-shadow: 5px 5px 10px grey;
+    overflow: hidden;
+}
+
+#quiz_track2D {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+}
+
+.quiz_car2D {
+    position: absolute;
+    margin-left: -2%;
+    width: auto;
+    height: 100%;
+}
+
+#quiz_car_user {
+    top: -25%;
+}
+
+#quiz_car_enemy {
+    top: 25%;
+    transition: transform 7s linear;
+}
+
+#quiz_car_user {
+    transition: transform 2s linear;
+}
+
+#quiz_achievements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#quiz_inkCanvas {
+    position: absolute;
+    z-index: 3;
+    display: none;
+    top: 4%;
+    right: 15%;
+}
+
+#quiz_changeTiresPanel {
+    background-color: grey;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    top: 0%;
+    right: 0%;
+}
+
+.quiz_tire {
+    position: absolute;
+    height: 14%;
+    z-index: 2;
+    transition: opacity 1s;
+    opacity: 1;
+    animation: growAndShrink 2s infinite;
+}
+
+@keyframes growAndShrink {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.noAnimation {
+    animation: none !important;
+}
+
+.quiz_newTire {
+    position: relative;
+    display: block;
+    margin-left: 10%;
+    padding-top: 5%;
+    cursor: grab;
+}
+
+#quiz_oldTire1,
+#quiz_tireDrop1 {
+    left: 38.8%;
+    top: 16%;
+}
+
+#quiz_oldTire2,
+#quiz_tireDrop2 {
+    left: 56.3%;
+    top: 16%;
+}
+
+#quiz_oldTire3,
+#quiz_tireDrop3 {
+    left: 38.8%;
+    top: 72%;
+}
+
+#quiz_oldTire4,
+#quiz_tireDrop4 {
+    left: 56.3%;
+    top: 72%;
+}
+
+#quiz_carNoTires {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 120%;
+}
+
+.quiz_tireDropZone {
+    position: absolute;
+    height: 14%;
+    width: 5.35%;
+    z-index: 1;
+}
+
+/*
+    quiz_itemBar = row; quiz_item = column
+ */
+#quiz_itemBar {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-top: 1%;
+    border: solid 4px #2b2b2b;
+    border-radius: 20px;
+    background-color: white;
+    width: 20vw;
+    display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.quiz_item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: min-content;
+}
+
+.quiz_item p {
+    margin: 0 auto;
+}
+
+.quiz_itemIcon {
+    height: 3vw;
+    object-fit: contain;
+}
+
+.quiz_boostOn {
+    filter: invert(12%) sepia(77%) saturate(6883%) hue-rotate(4deg) brightness(100%) contrast(118%);
+}
+
+.quiz_itemDisabled {
+    opacity: 0.4;
+    filter: grayscale(100%);
+}
+
+.end_content {
+    background-color: #3e3e3e;
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid #eea24c;
+    border-radius: 20px;
+    width: 60%;
+}
+
+#exit_msg {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px auto 40px auto;
+}
+
+#end_msg {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px auto 30px auto;
+}
+
+#end_trophy {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    height: 20%;
+}
+
+#end_msg2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 5px auto 20px auto;
+}
+
+#end_time {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 5px auto 20px auto;
+}
+
+#end_highscore {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 5px auto 20px auto;
+}
+
+#end_table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+#end_table th {
+    font-size: 25px;
+    font-weight: bold;
+    width: 33%;
+    color: #eea24c;
+}
+
+#end_table td,
+tr {
+    background-color: #3e3e3e;
+    font-weight: bold;
+    color: #ffffff;
+    border-style: hidden;
+}
+
+#quiz_earnedItemAlert {
+    display: inline-block;
+    color: white;
+    border: 2px solid #eea24c;
+    border-radius: 20px;
+    background-color: #3e3e3e;
+    padding: 20px 20px 20px 20px;
+    opacity: 0;
+    margin-top: 10px;
+}
+
+.btn_group {
+    width: 100%;
+    text-align: center;
+}
+
+.btn_group button {
+    display: inline-block;
+    margin: 20px 5px 10px 5px;
+    padding: 10px 24px;
+    cursor: pointer;
+    width: 15%;
+    background-color: #eea24c;
+    border: 2px solid #eea24c;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn_group button:hover {
+    background-color: #eea24c;
+    color: #000000;
+}
+
+#quiz_reporterDiv {
+    position: relative;
+}
+
+#quiz_bubble {
+    position: absolute;
+    margin-bottom: -8%;
+    bottom: 0;
+    right: 0;
+}
+
+/* Button */
+#quiz_start {
+    position: absolute;
+    bottom: 4%;
+    left: 48%;
+    background-color: red;
+    opacity: 0.9;
+    border-radius: 50%;
+    /* border: none; */
+    color: white;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.quiz_textwrapper {
+    position: absolute;
+    width: 10%;
+    bottom: 0;
+    right: 6%;
+    transform: rotate(-10deg);
+}
+
+#quiz_content {
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 17%;
+    top: 0px;
+}
+
+#quiz_content.error #quiz_feedback {
+    color: red;
+}
+
+#quiz_content.error #quiz_inputBox {
+    border: solid red 2px;
+}
+
+#quiz_content #quiz_question {
+    visibility: hidden;
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+#quiz_content #quiz_question span {
+    font-size: 40px;
+    color: #ffff00;
+    font-weight: bold;
+}
+
+#quiz_content #quiz_feedback {
+    width: 100%;
+    font-size: 140%;
+    text-align: center;
+    text-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: black;
+}
+
+#quiz_content #quiz_inputBox {
+    display: flex;
+    overflow: hidden;
+    border: solid #444;
+    border-radius: 10px;
+    width: 50%;
+    position: absolute;
+    left: 25%;
+}
+
+#quiz_content #quiz_inputBox button {
+    border: none;
+    padding: 0px 20px;
+    font-size: 30px;
+    color: darkgrey;
+}
+
+#quiz_content #quiz_inputBox input {
+    line-height: 45px;
+    width: 99%;
+    font-size: 32px;
+    text-align: center;
+}
+
+#quiz_timerDiv {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    background-size: cover;
+    top: 10px;
+}
+
+#quiz_timerDiv div {
+    /*border: dashed red 1px;*/
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 100%;
+}
+
+
+/* ############### SIGNUP ############### */
+#signup_backgroundImage {
+    background-image: url(../images/Registrierhintergrund.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    filter: blur(8px);
+}
+
+.signup_panel {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    top: 47.5%;
+    background-color: white;
+    border: 3px solid #f1f1f1;
+    border-radius: 20px;
+    display: block;
+    padding: 3%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.signup_form {
+    position: relative;
+    border-radius: 20px;
+    text-align: center;
+    display: block;
+}
+
+#signup_backButton {
+    position: absolute;
+    top: 0.6vw;
+    left: 0.6vw;
+    width: 5.5%;
+    z-index: 1;
+}
+
+#signup_backText {
+    position: absolute;
+    top: 2vw;
+    left: 8%;
+    font-size: calc(1.5vh);
+    z-index: 1;
+}
+
+.elementNotVisible {
+    opacity: 0;
+}
+
+.elementToFadeInAndOut {
+    opacity: 1;
+    animation: fade 6s linear;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0
+    }
+    30% {
+        opacity: 1
+    }
+    80% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+    }
+}

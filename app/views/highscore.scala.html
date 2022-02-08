@@ -1,0 +1,81 @@
+@(message: String)(implicit assetsFinder: AssetsFinder)
+
+@defining(play.core.PlayVersion.current) { version =>
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Bestenliste</title>
+            <link rel="shortcut Icon" type="image/png" href="@assetsFinder.path("images/icon.png")">
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/style.css")">
+            <script src="@assetsFinder.path("javascripts/highscore.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/chat.js")" type="text/javascript"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </head>
+        <body id="highscore_body">
+            <ul class="menu_ul">
+                <div class="menu_top_links">
+                    <li class="menu_li"><a href="mainpage">Garage</a></li>
+                    <li class="menu_li"><a href="profile">Profil</a></li>
+                    <li class="menu_li"><a href="highscore">Bestenliste</a></li>
+                </div>
+                <li class="menu_li" style="float: right"><a href="@routes.LoginController.logout()">Abmelden</a></li>
+            </ul>
+            <div class ="chat_div">
+                <img id="chat_button" class = "chat_button" src="@assetsFinder.path("images/chat_icon_weiß.png")" onclick="open_chat()" >
+
+                <div id="highscore_header">
+                    <img src="@assetsFinder.path("images/winning.png")" style="width: 5%">
+                    <h1 id=highsore_h>BESTENLISTE</h1>
+                    <img src="@assetsFinder.path("images/trophy.png")" style="width: 5%">
+                    <div class = "chat_window" id = "chat_show">
+                        <form id="chat_containerFreunde" >
+                            <div class ="chat_friendslist" id="chat_friendslist">
+                                <label class="profile_label">Meine Freunde:</label>
+                                <ol id="friends_list_chat">
+                                </ol>
+                            </div>
+                        </form>
+
+                        <form id="chat_containerChat" onsubmit="return false">
+                            <img id="chat_window_close_button" alt="Spiel beenden" src="@assetsFinder.path("images/x-button.png")"
+                            onclick="close_chat()" >
+                            <div id ="chat_messagechat">
+                                <label id = "chat_containerLabel_Freund" class="profile_label">
+                                    Wähle einen Freund aus um ihm Nachrichten zu Schreiben!</label>
+                                <div class ="chat_Messagelist" id="chat_Messagelist">
+                                    <div id="friends_listM">
+                                    </div>
+                                </div>
+                                <div id ="chat_messagelist_buI">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="highscore_buttons">
+                    <button class="highscore_menu" onclick="highscore_changeToScore()">Punkte</button>
+                    <button class="highscore_menu" onclick="highscore_changeToHighscore()">Rekord</button>
+                    <button class="highscore_menu" onclick="highscore_changeToGamesPlayed()">Spielanzahl</button>
+                </div>
+
+                <div id="tablecontainer" class="tablecontainer">
+                    <table id="highsore_tab" border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+                            <!-- The Row Number 0 -->
+                        <thead id="fixedHeader">
+                            <tr>
+                                <th>Name</th>
+                                <th id="highscore_value">Punkte</th>
+                            </tr>
+                        </thead>
+                        <tbody id="highscore_tbody" class="scrollContent"></tbody>
+                    </table>
+                </div>
+            </div>
+            <script>loadScoreboard()</script>
+        </body>
+    </html>
+}

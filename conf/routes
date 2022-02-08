@@ -1,0 +1,49 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# Map static resources from the /public folder to the /assets URL path
+
+# Assets #
+GET         /assets/*file                  controllers.Assets.versioned(file)
+
+# Authentication #
+GET         /                              controllers.LoginController.login(request:Request)
+POST        /validateLogin                 controllers.LoginController.validateLogin(request:Request)
+GET         /signup                        controllers.SignupController.signup
+POST        /validateSignup                controllers.SignupController.validateSignup(request:Request)
+GET         /logout                        controllers.LoginController.logout(request:Request)
+
+# Service #
+GET         /mainpage                      controllers.MainpageController.mainpage(request:Request)
+GET         /quiz                          controllers.QuizController.quiz(request:Request)
+GET         /profile                       controllers.ProfileController.profile(request:Request)
+GET         /highscore                     controllers.HighscoreController.highscore(request:Request)
+GET         /friend                        controllers.FriendController.friend(request:Request)
+
+# API #
+POST        /setMode                       controllers.MainpageController.setMode(request:Request)
+GET         /getMode                       controllers.QuizController.getMode(request:Request)
+POST        /updateScore                   controllers.QuizController.updateScore(request:Request)
+POST        /storeGame                     controllers.QuizController.storeGame(request:Request)
+POST        /sendMessage                   controllers.MainpageController.sendMessage(request:Request)
+POST        /updateItemsOwned              controllers.QuizController.updateItemsOwned(request:Request)
+GET         /getScoreboard                 controllers.HighscoreController.getScoreboard(request:Request)
+GET         /getHighscoreboard             controllers.HighscoreController.getHighscoreboard(request:Request)
+GET         /getGamesPlayedboard           controllers.HighscoreController.getGamesPlayedboard(request:Request)
+GET         /getUserHasItemsForCurrentUser controllers.QuizController.getUserHasItemsForCurrentUser(request:Request)
+GET         /getAllItems                   controllers.MainpageController.getAllItems(request:Request)
+POST        /updateProfile                 controllers.ProfileController.updateProfile(request:Request)
+GET         /getAchievements               controllers.ProfileController.getAchievements(request:Request)
+GET         /getFriends                    controllers.ProfileController.getFriends(request:Request)
+GET         /getHighscore                  controllers.QuizController.getHighscore(request:Request)
+GET         /getNewAchievements            controllers.QuizController.getNewAchievements(request:Request)
+POST        /validateNewFriend             controllers.ProfileController.validateNewFriend(request:Request)
+POST        /showFriend                    controllers.ProfileController.showFriend(request:Request)
+GET         /getfriendsFriends             controllers.FriendController.getFriends(request:Request)
+GET         /getfriendsAchievements        controllers.FriendController.getAchievements(request:Request)
+GET         /getNewFriendAchievement       controllers.ProfileController.getNewFriendAchievement(request:Request)
+GET         /getPicture                    controllers.ProfileController.getPicture(request:Request)
+GET         /getfriendsPicture             controllers.FriendController.getPicture(request:Request)
+GET         /earnNewRandomItem             controllers.QuizController.earnNewRandomItem(request:Request)
+GET         /getAllMessages                controllers.MainpageController.getAllMessages(request:Request)
+POST        /getChatHistory                controllers.MainpageController.getChatHistory(request:Request)
+GET         /getUserId                     controllers.MainpageController.getUserId(request:Request)

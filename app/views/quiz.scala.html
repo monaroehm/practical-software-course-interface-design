@@ -1,0 +1,176 @@
+@(username: String)(implicit assetsFinder: AssetsFinder)
+
+@defining(play.core.PlayVersion.current) { version =>
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Formel1x1</title>
+            <link rel="shortcut Icon" type="image/png" href="@assetsFinder.path("images/icon.png")">
+            <link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/style.css")">
+            <link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/tachometer.css")">
+
+            <script src="@assetsFinder.path("javascripts/timer.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/gameEventHandler.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/inkEvent.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/confetti.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/quiz.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/items.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/changeTiresEvent.js")" type="text/javascript"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </head>
+        <body style="background-image: url(@assetsFinder.path("images/ArenaBlur.jpg"));
+
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-size: 100% 100%;" onload="quiz_onload()">
+            <canvas id="confetti_canvas"></canvas>
+
+            <img id="quiz_lights" src="@assetsFinder.path("images/lights.gif")" style="display: none">
+
+            <div id="quiz_racetrackContainer">
+                <img id="quiz_track2D" src="@assetsFinder.path("images/track.png")">
+                <img id="quiz_car_enemy" class="quiz_car2D" src="@assetsFinder.path("images/2D_Red.png")">
+                <img id="quiz_car_user" class="quiz_car2D" src="@assetsFinder.path("images/2D_Blue.png")">
+            </div>
+
+            <div id="quiz_timerDiv" style="background-image: url(@assetsFinder.path("images/watch.png"));">
+                <div id="quiz_timer">00:00:00</div>
+            </div>
+
+            <div id= "quiz_quizContainer">
+                <img id="quiz_nogif" class="quiz_streetview" src="@assetsFinder.path("images/Standbild.png")" alt="Aussicht">
+                <img id="quiz_insideCar" class="quiz_streetview" src="@assetsFinder.path("images/OhneCarGif.gif")" alt="Aussicht">
+                <img id="quiz_nearCar" class="quiz_streetview" src="@assetsFinder.path("images/NahCarGif.gif")" alt="Aussicht">
+                <img id="quiz_farawayCar" class="quiz_streetview" src="@assetsFinder.path("images/WegCarGif.gif")" alt="Aussicht">
+
+                <div id="tachometer">
+                    <div class="ii">
+                        <div><b><span class="num_1">0</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_2">1</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_3">2</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_4">3</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_5">4</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_6">5</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_7">6</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_8">7</span></b></div>
+                        <div><b></b></div>
+                        <div><b><span class="num_9">8</span></b></div>
+                    </div>
+                    <div id="line"></div>
+                    <div class="pin"><div class="inner"></div></div>
+                </div>
+
+                <div id="quiz_content">
+                    <div id="quiz_question">
+                        <span id="quiz_firstFactor">0</span>
+                        <span> x</span>
+                        <span id="quiz_secondFactor">0</span>
+                    </div>
+                    <div id="quiz_inputBox">
+                        <input id="quiz_answer" type="number" onkeydown="quiz_enterKeySubmit()" disabled required>
+                        <button id="quiz_eingabe_button" onclick="quiz_checkAnswer()" disabled>Ok</button>
+                    </div>
+                    <div>
+                        <span id="quiz_feedback" class="elementNotVisible"></span>
+                    </div>
+                </div>
+                <button id="quiz_start" onclick="quiz_start()">Start</button>
+
+                <canvas id="quiz_inkCanvas" width="495" height="323"></canvas>
+                <div id="quiz_changeTiresPanel">
+                    <div id="quiz_tireDrop1" class="quiz_tireDropZone" ondrop="changeTiresEvent.drop(event)" ondragover="changeTiresEvent.allowDrop(event)"></div>
+                    <div id="quiz_tireDrop2" class="quiz_tireDropZone quiz_tireDropRight" ondrop="changeTiresEvent.drop(event)" ondragover="changeTiresEvent.allowDrop(event)"></div>
+                    <div id="quiz_tireDrop3" class="quiz_tireDropZone" ondrop="changeTiresEvent.drop(event)" ondragover="changeTiresEvent.allowDrop(event)"></div>
+                    <div id="quiz_tireDrop4" class="quiz_tireDropZone quiz_tireDropRight" ondrop="changeTiresEvent.drop(event)" ondragover="changeTiresEvent.allowDrop(event)"></div>
+                    <img id="quiz_newTire1" class="quiz_tire quiz_newTire" src="@assetsFinder.path("images/tire.png")" draggable="true" ondragstart="changeTiresEvent.drag(event)">
+                    <img id="quiz_newTire2" class="quiz_tire quiz_newTire" src="@assetsFinder.path("images/tire.png")" draggable="true" ondragstart="changeTiresEvent.drag(event)">
+                    <img id="quiz_newTire3" class="quiz_tire quiz_newTire" src="@assetsFinder.path("images/tire.png")" draggable="true" ondragstart="changeTiresEvent.drag(event)">
+                    <img id="quiz_newTire4" class="quiz_tire quiz_newTire" src="@assetsFinder.path("images/tire.png")" draggable="true" ondragstart="changeTiresEvent.drag(event)">
+                    <img id="quiz_carNoTires" src="@assetsFinder.path("images/2D_Blue_noTires.png")">
+                    <img id="quiz_oldTire1" class="quiz_tire quiz_oldTire" src="@assetsFinder.path("images/tire.png")" onclick="changeTiresEvent.removeTireLeft(this)" ondragend="changeTiresEvent.removeTireLeft(this)">
+                    <img id="quiz_oldTire2" class="quiz_tire quiz_oldTire" src="@assetsFinder.path("images/tire.png")" onclick="changeTiresEvent.removeTireRight(this)" ondragend="changeTiresEvent.removeTireRight(this)">
+                    <img id="quiz_oldTire3" class="quiz_tire quiz_oldTire" src="@assetsFinder.path("images/tire.png")" onclick="changeTiresEvent.removeTireLeft(this)" ondragend="changeTiresEvent.removeTireLeft(this)">
+                    <img id="quiz_oldTire4" class="quiz_tire quiz_oldTire" src="@assetsFinder.path("images/tire.png")" onclick="changeTiresEvent.removeTireRight(this)" ondragend="changeTiresEvent.removeTireRight(this)">
+                </div>
+            </div>
+
+            <div id="quiz_itemBar">
+                <div class="quiz_item">
+                    <img id="quiz_boostIcon" class="quiz_itemIcon quiz_itemDisabled" src="@assetsFinder.path("images/noun_boost.png")">
+                    <p id="quiz_boostItemsAvailable"></p>
+                </div>
+                <div class="quiz_item">
+                    <img id="quiz_SkipIcon" class="quiz_itemIcon quiz_itemDisabled" src="@assetsFinder.path("images/noun_skip.png")">
+                    <p id="quiz_skipItemsAvailable"></p>
+                </div>
+            </div>
+
+            <img id="quiz_xButton" alt="Spiel beenden" src="@assetsFinder.path("images/x-button.png")"
+            onclick="quiz_exit()" style="width: 5%;
+                height: auto">
+
+            <div id="quiz_exit">
+                <div class="end_content">
+                    <div id="exit_msg">
+                        Willst du das Spiel wirklich verlassen?<br>
+                        Dein Fortschritt in dieser Runde geht dabei verloren.</div>
+                    <div class="btn_group">
+                        <button onclick="quiz_confirm_exit()">Ja</button>
+                        <button onclick="quiz_dismiss_exit()">Nein</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz_end">
+                <div class="end_content">
+                    <p id="end_msg">Du hast [result]!</p>
+                    <img id="end_trophy" src="https://www.transparentpng.com/thumb/trophy/JtYJVf-trophy-images-png-clipart.png" alt="trophy Image">
+                    <p id="end_msg2">[Punkte]</p>
+                    <p id="end_time">00:00:00</p>
+                    <p id="end_highscore">[Dein Highscore]</p>
+                    <table id="end_table">
+                        <tr>
+                            <th id="end_user">@username</th>
+                            <th id="end_category"></th>
+                            <th id="end_enemy">Rote Baron</th>
+                        </tr>
+                        <tr>
+                            <td id="end_errors_user">0</td>
+                            <td id="end_errors">Fehler</td>
+                            <td id="end_errors_enemy">0</td>
+                        </tr>
+                        <tr>
+                            <td id="end_tpt_user">00:00:00</td>
+                            <td id="end_tpt">Zeit pro Aufgabe</td>
+                            <td id="end_tpt_enemy">00:00:00</td>
+                        </tr>
+                    </table>
+
+                    <div class="btn_group">
+                        <button onclick="window.location.href = 'mainpage'">Garage</button>
+                        <button onclick="window.location.href = 'highscore'">Bestenliste</button>
+                    </div>
+                </div>
+                <span id="quiz_earnedItemAlert"></span>
+            </div>
+            <div id = "quiz_reporterDiv">
+                <div class="quiz_speechbubble">
+                    <img id="quiz_bubble" src="@assetsFinder.path("images/SpeechBubble.png")" alt="Aussicht" style="width: 20%;
+                        height: auto">
+                    <div class = "quiz_textwrapper">
+                        <p id="quiz_bubble_content">Klick auf Start, um loszulegen!</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+}

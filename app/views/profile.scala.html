@@ -1,0 +1,105 @@
+@(message: String, username: String, score: String, highscore: String, gamesPlayed: String)(implicit assetsFinder: AssetsFinder)
+
+@defining(play.core.PlayVersion.current) { version =>
+<!DOCTYPE html>
+    <html lang="de">
+        <head>
+            <meta charset="UTF-8">
+            <title>@username's Profil</title>
+            <link rel="shortcut Icon" type="image/png" href="@assetsFinder.path("images/icon.png")">
+
+            <link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/style.css")">
+            <script src="@assetsFinder.path("javascripts/profile.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/profileView.js")" type="text/javascript"></script>
+            <script src="@assetsFinder.path("javascripts/chat.js")" type="text/javascript"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </head>
+        <body id="profile_body">
+            <ul class="menu_ul">
+                <div class="menu_top_links">
+                    <li class="menu_li"><a href="mainpage">Garage</a></li>
+                    <li class="menu_li"><a href="profile">Profil</a></li>
+                    <li class="menu_li"><a href="highscore">Bestenliste</a></li>
+                </div>
+                <li class="menu_li" style="float: right"><a href="@routes.LoginController.logout()">Abmelden</a></li>
+            </ul>
+            <div class ="chat_div">
+                <img id="chat_button" class = "chat_button"src="@assetsFinder.path("images/chat_icon_weiß.png")" onclick="open_chat()" >
+
+                <div class = "chat_window" id = "chat_show">
+                    <form id="chat_containerFreunde" >
+                        <div class ="chat_friendslist" id="chat_friendslist">
+                            <label class="profile_label">Meine Freunde:</label>
+                            <ol id="friends_list_chat">
+                            </ol>
+                        </div>
+                    </form>
+
+                    <form  id="chat_containerChat"onsubmit="return false">
+                        <img id="chat_window_close_button" alt="Spiel beenden" src="@assetsFinder.path("images/x-button.png")"
+                        onclick="close_chat()" >
+                        <div id ="chat_messagechat">
+                            <label id = "chat_containerLabel_Freund" class="profile_label">Wähle einen Freund aus um ihm Nachrichten zu Schreiben!</label>
+                            <div class ="chat_Messagelist" id="chat_Messagelist">
+                                <div id="friends_listM">
+                                </div>
+                            </div>
+                            <div id ="chat_messagelist_buI">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="profile_friend">
+                <input id="profile_searchfriend" placeholder="Freunde suchen...">
+                <button id ="profile_addFriendButton" onclick="profile_validateNewFriend()">Freund hinzufügen</button>
+                <div class ="profile_friendsList clickable">
+                    <label class="profile_label">Meine Freunde:</label>
+                    <ol id="friends_list">
+                    </ol>
+                </div>
+                <div class="profile_notify"><span id="notifyType" class=""></span></div>
+            </div>
+            <div class="profile_container">
+                <img id="profile_profilePic" src="@assetsFinder.path("images/profile-icon.png")" alt="Mein Profilbild" style="width: 200px;
+                    height: 200px">
+                <h3 id="profile_name" >@username</h3>
+                <button class="profile_button" id="button" type = "button" onclick="profile_onEditProfile()">
+                    Profil bearbeiten</button>
+                <div id="profile_scoreDiv">
+                    <label>Punkte:</label>
+                    <output id="profile_score">@score</output>
+                    <label>Rekord:</label>
+                    <output id="profile_score">@highscore</output>
+                    <label>Spielanzahl:</label>
+                    <output id="profile_score">@gamesPlayed</output>
+                </div>
+            </div>
+            <div class="profile_bg-modal">
+                <div class="profile_modal-content">
+                    <div class="profile_close" onclick="profile_cancel()">+</div>
+                    <div id="profile_changeName">
+                        <label id = "profile_username">Neuer Benutzername:<br></label>
+                        <input id="profile_changeUsername" type="text"><br>
+                    </div>
+                    <div id="profile_Pics">
+                        <img class="profile_Img" id="image1" src="@assetsFinder.path("images/Girl.jpg")" onclick="profile_img_clicked(this)">
+                        <img class="profile_Img" id="image2" src="@assetsFinder.path("images/Boy.jpg")" onclick="profile_img_clicked(this)">
+                        <img class="profile_Img" id="image3" src="@assetsFinder.path("images/Girl2.jpg")" onclick="profile_img_clicked(this)">
+                        <img class="profile_Img" id="image4" src="@assetsFinder.path("images/Boy2.jpg")" onclick="profile_img_clicked(this)">
+                    </div>
+                    <button class="profile_modalButton" onclick="profile_updateProfile()">Profil bestätigen</button>
+                </div>
+            </div>
+            <div id="profile_achievementCon">
+                <label class="profile_label">Meine Errungenschaften:</label>
+                <div id="profile_achievements">
+                </div>
+            </div>
+            <script>profile_loadFriendsList()</script>
+            <script>profile_loadAchievements()</script>
+            <script>profile_getFriendAchievement()</script>
+            <script>profile_loadPicture()</script>
+        </body>
+    </html>
+}
