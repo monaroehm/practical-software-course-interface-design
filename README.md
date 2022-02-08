@@ -8,7 +8,7 @@ We used the play framework, a web application framework, to create a serious gam
 
 # Authoring tool
 
-An authoring tool was created using JavaFX to provide a graphical user interface to manipulate the data of the database. This tool can also be seen in the video presentation ([docs/formel1x1.mp4](docs/formel1x1.mp4)), and I have also published the code here: [practical-software-course-interface-design-authoring-tool](https://github.com/monaroehm/practical-software-course-interface-design-authoring-tool)
+An authoring tool was created using JavaFX to provide a graphical user interface to manipulate the data of the database. This tool can also be seen in the [video presentation](docs/formel1x1.mp4), and I have also published the code here: [practical-software-course-interface-design-authoring-tool](https://github.com/monaroehm/practical-software-course-interface-design-authoring-tool)
 
 # My contributions
 
