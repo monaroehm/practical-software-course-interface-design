@@ -12,4 +12,15 @@ An authoring tool was created using JavaFX to provide a graphical user interface
 
 # My contributions
 
-I did a bit of everything (Scala, CSS, JavaScript, SQL, Java, FXML) but my focus was the logic of the game mechanics which was mostly JavaScript.
+I did a bit of everything (CSS, JavaScript, SQL, Java, FXML) but my focus was the **logic of the game mechanics** which was mostly JavaScript:  
+
+During the game, little minigame events are triggered every 20-30 seconds: [gameEventHandler.js](public/javascripts/gameEventHandler.js)  
+These Events include:  
+- [changing the tires of the vehicle](public/javascripts/changeTiresEvent.js)  
+![](public/images/reifenGif.gif)
+- [cleaning dirt/ink off the screen](public/javascripts/inkEvent.js)  
+![](public/images/tintenGif.gif)
+
+[Items](public/javascripts/items.js) are earned after the games and can be used while playing. All information about the ownership of items are stored in a database and updated with the according server-side [QuizController](app/controllers/QuizController.java) deriving from play.mvc.Controller, using the Fetch API to send requests from client to server.
+
+I also created the art of the [main garage hub](public/images/GarageDefault.png), including hover effects like the [open door](public/images/GaragePlayHover.png), using [Gravit Designer](https://www.designer.io/en/)
