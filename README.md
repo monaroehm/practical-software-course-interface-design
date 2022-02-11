@@ -23,4 +23,7 @@ These Events include:
 
 [Items](public/javascripts/items.js) are earned after the games and can be used while playing. All information about the ownership of items are stored in a database and updated with the according server-side [QuizController](app/controllers/QuizController.java) deriving from play.mvc.Controller, using the Fetch API to send requests from client to server.
 
-I also created the art of the [main garage hub](public/images/GarageDefault.png), including hover effects like the [open door](public/images/GaragePlayHover.png), using [Gravit Designer](https://www.designer.io/en/)
+I also created the art of the [main garage hub](public/images/GarageDefault.png), including various hover effects for the [door](public/images/GaragePlayHover.png) and other clickable areas, using [Gravit Designer](https://www.designer.io/en/):
+
+![](public/images/GarageDefault.png)
+![](public/images/GaragePlayHover.png)
