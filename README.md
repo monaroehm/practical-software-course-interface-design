@@ -1,6 +1,6 @@
 # Practical software course interface design: Formel 1x1
 
-This project was part of the module "Softwarepraktikum Schnittstellenentwurf", which literally translates to "practical software course interface design", in 2020/2021, my third semester at the Julius-Maximilians-Universität of Würzburg. It was created in collaboration with four other students. Unfortunately, I do not currently have a hosted database, so it won't actually run in its current state, but the video presentation of the final submission can be viewed [here](docs/formel1x1.mp4).
+This project was part of the module "Softwarepraktikum Schnittstellenentwurf", which literally translates to "practical software course interface design", in 2020/2021, my third semester at the Julius-Maximilians-Universität of Würzburg. It was created in collaboration with four other students. Unfortunately, the project won't run without a database, but you should be able to set up your own connection in [conf/application.conf](conf/application.conf) using the SQL script provided in [docs/Formel1x1DB.sql](docs/Formel1x1DB.sql). The video presentation of the final submission, which can be viewed [here](docs/formel1x1.mp4), also gives a quick overview of the complete application.
 
 # The project
 
